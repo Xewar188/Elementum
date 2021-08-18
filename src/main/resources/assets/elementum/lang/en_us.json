@@ -1,5 +1,7 @@
 {
   "itemGroup.main_item_group": "Elementum",
   "block.elementum.fire_essence_block": "Fire Essence Block",
-  "item.elementum.fire_essence": "Fire Essence"
+  "item.elementum.fire_essence": "Fire Essence",
+  "block.elementum.water_essence_block": "Water Essence Block",
+  "item.elementum.water_essence": "Water Essence"
 }

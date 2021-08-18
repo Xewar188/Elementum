@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
 
 public class FireEssence extends Item{
 
-    private final static int FLAME_RANGE = 5;
+    private final static int FLAME_RANGE = 2;
     private final static int MAX_DURABILITY = 200;
 
     public FireEssence() {
@@ -44,6 +44,7 @@ public class FireEssence extends Item{
         int heightMod = 0;
         if (playerIn.getItemInHand(hand).getDamageValue() >= MAX_DURABILITY)
             return new ActionResult(ActionResultType.FAIL,  playerIn.getItemInHand(hand));
+        boolean atLeastOnePlaced = false;
         for (int i = 1; i <= FLAME_RANGE; i++) {
             if (!worldIn.isClientSide && worldIn.getGameRules().getBoolean(GameRules.RULE_DOFIRETICK)) {
                 double playerDirSin = -Math.sin(playerIn.getRotationVector().y * Math.PI * 2 / 360D );
@@ -76,16 +77,18 @@ public class FireEssence extends Item{
                         break;
                     }
                 }
-                if (!success)
+                if (!success) {
+                    atLeastOnePlaced = i > 1;
                     break;
-
+                }
 
             }
         }
 
-        playerIn.getItemInHand(hand).hurtAndBreak(1, playerIn, (p_220040_1_) -> {
-            p_220040_1_.broadcastBreakEvent(hand);
-        });
+        if(atLeastOnePlaced)
+            playerIn.getItemInHand(hand).hurtAndBreak(1, playerIn, (p_220040_1_) -> {
+                p_220040_1_.broadcastBreakEvent(hand);
+            });
         return new ActionResult(ActionResultType.PASS,  playerIn.getItemInHand(hand));
     }
 

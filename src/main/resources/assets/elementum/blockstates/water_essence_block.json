@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": { "model": "elementum:block/water_essence_block_model" }
+  }
+}
