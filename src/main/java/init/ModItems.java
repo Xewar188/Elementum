@@ -1,5 +1,6 @@
 package init;
 
+import items.EarthEssence;
 import items.FireEssence;
 import items.WaterEssence;
 import net.minecraft.item.Item;
@@ -10,6 +11,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 public class ModItems {
     public static FireEssence fireEssence;
     public static WaterEssence waterEssence;
+    public static EarthEssence earthEssence;
 
     @SubscribeEvent
     public static void onItemsRegistration(final RegistryEvent.Register<Item> itemRegisterEvent) {
@@ -20,6 +22,10 @@ public class ModItems {
         waterEssence = new WaterEssence();
         waterEssence.setRegistryName("water_essence");
         itemRegisterEvent.getRegistry().register(waterEssence);
+
+        earthEssence = new EarthEssence();
+        earthEssence.setRegistryName("earth_essence");
+        itemRegisterEvent.getRegistry().register(earthEssence);
     }
 
     @SubscribeEvent

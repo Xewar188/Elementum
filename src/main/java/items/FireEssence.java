@@ -3,7 +3,6 @@ package items;
 import entities.FireEssenceItemEntity;
 import init.ModItemGroup;
 import net.minecraft.block.AbstractFireBlock;
-import net.minecraft.block.BlockState;
 import net.minecraft.block.FireBlock;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -39,7 +38,7 @@ public class FireEssence extends Item{
     }
 
     @Override
-    public ActionResult<ItemStack> use(World worldIn, PlayerEntity playerIn, Hand hand) {
+    public ActionResult use(World worldIn, PlayerEntity playerIn, Hand hand) {
 
         int heightMod = 0;
         if (playerIn.getItemInHand(hand).getDamageValue() >= MAX_DURABILITY)

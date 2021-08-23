@@ -10,5 +10,6 @@ public class ModBlocksClientSide {
     public static void onClientSetupEvent(FMLClientSetupEvent event) {
         RenderTypeLookup.setRenderLayer(ModBlocks.fireEssenceBlock, RenderType.solid());
         RenderTypeLookup.setRenderLayer(ModBlocks.waterEssenceBlock, RenderType.solid());
+        RenderTypeLookup.setRenderLayer(ModBlocks.earthEssenceBlock, RenderType.solid());
     }
 }

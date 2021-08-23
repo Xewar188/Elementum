@@ -2,13 +2,12 @@ package entities;
 
 import net.minecraft.block.AbstractFireBlock;
 import net.minecraft.block.BlockState;
-import net.minecraft.entity.effect.LightningBoltEntity;
+import net.minecraft.block.Blocks;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
-import net.minecraft.world.server.ServerWorld;
 
 public class FireEssenceItemEntity extends ItemEntity {
 
@@ -48,15 +47,13 @@ public class FireEssenceItemEntity extends ItemEntity {
     public void generateFire() {
         if (!this.level.isClientSide && this.level.getGameRules().getBoolean(GameRules.RULE_DOFIRETICK)) {
             BlockPos blockpos = this.blockPosition();
-            BlockState blockstate = AbstractFireBlock.getState(this.level, blockpos);
-            if (this.level.getBlockState(blockpos).isAir() && blockstate.canSurvive(this.level, blockpos)) {
-                this.level.setBlockAndUpdate(blockpos, blockstate);
-            }
 
             for(int i = 0; i < this.random.nextInt(3)+1; ++i) {
                 BlockPos blockpos1 = blockpos.offset(this.random.nextInt(3) - 1, this.random.nextInt(3) - 1, this.random.nextInt(3) - 1);
-                blockstate = AbstractFireBlock.getState(this.level, blockpos1);
-                if (this.level.getBlockState(blockpos1).isAir() && blockstate.canSurvive(this.level, blockpos1)) {
+                if (this.blockPosition().getX() == blockpos1.getX() && this.blockPosition().getZ() == blockpos1.getZ())
+                    continue;
+                BlockState blockstate = AbstractFireBlock.getState(this.level, blockpos1);
+                if (this.level.getBlockState(blockpos1).is(Blocks.AIR) && blockstate.canSurvive(this.level, blockpos1)) {
                     this.level.setBlockAndUpdate(blockpos1, blockstate);
                 }
             }

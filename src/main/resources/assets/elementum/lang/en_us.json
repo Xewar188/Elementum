@@ -3,5 +3,7 @@
   "block.elementum.fire_essence_block": "Fire Essence Block",
   "item.elementum.fire_essence": "Fire Essence",
   "block.elementum.water_essence_block": "Water Essence Block",
-  "item.elementum.water_essence": "Water Essence"
+  "item.elementum.water_essence": "Water Essence",
+  "block.elementum.earth_essence_block": "Earth Essence Block",
+  "item.elementum.earth_essence": "Earth Essence"
 }
