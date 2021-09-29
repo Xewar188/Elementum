@@ -33,6 +33,9 @@ public class FireEssenceItemEntity extends ItemEntity {
     @Override
     public void tick() {
         super.tick();
+        if (this.isInWater()) {
+            this.remove();
+        }
         if(CURRENT_FIRE_COUNT == FIRE_GENERATION_RATE) {
             CURRENT_FIRE_COUNT = 0;
             generateFire();

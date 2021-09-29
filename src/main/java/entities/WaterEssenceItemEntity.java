@@ -22,12 +22,6 @@ public class WaterEssenceItemEntity extends ItemEntity {
         return true;
     }
 
-
-    @Override
-    public boolean fireImmune() {
-        return true;
-    }
-
     @Override
     public void tick() {
         super.tick();

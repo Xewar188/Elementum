@@ -11,5 +11,6 @@ public class ModBlocksClientSide {
         RenderTypeLookup.setRenderLayer(ModBlocks.fireEssenceBlock, RenderType.solid());
         RenderTypeLookup.setRenderLayer(ModBlocks.waterEssenceBlock, RenderType.solid());
         RenderTypeLookup.setRenderLayer(ModBlocks.earthEssenceBlock, RenderType.solid());
+        RenderTypeLookup.setRenderLayer(ModBlocks.airEssenceBlock, RenderType.solid());
     }
 }

@@ -10,9 +10,9 @@ public class EarthEssenceBlock extends Block {
     public EarthEssenceBlock() {
         super(Block.Properties.of(Material.STONE)
                 .requiresCorrectToolForDrops()
-                .harvestLevel(2)
+                .harvestLevel(3)
                 .harvestTool(ToolType.PICKAXE)
-                .strength(3.0F,1200.0F));
+                .strength(6.0F,1200.0F));
 
     }
 

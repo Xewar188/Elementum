@@ -1,5 +1,6 @@
 package init;
 
+import items.AirEssence;
 import items.EarthEssence;
 import items.FireEssence;
 import items.WaterEssence;
@@ -12,6 +13,7 @@ public class ModItems {
     public static FireEssence fireEssence;
     public static WaterEssence waterEssence;
     public static EarthEssence earthEssence;
+    public static AirEssence airEssence;
 
     @SubscribeEvent
     public static void onItemsRegistration(final RegistryEvent.Register<Item> itemRegisterEvent) {
@@ -26,6 +28,10 @@ public class ModItems {
         earthEssence = new EarthEssence();
         earthEssence.setRegistryName("earth_essence");
         itemRegisterEvent.getRegistry().register(earthEssence);
+
+        airEssence = new AirEssence();
+        airEssence.setRegistryName("air_essence");
+        itemRegisterEvent.getRegistry().register(airEssence);
     }
 
     @SubscribeEvent

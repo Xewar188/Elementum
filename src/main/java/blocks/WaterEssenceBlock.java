@@ -10,7 +10,7 @@ public class WaterEssenceBlock extends Block {
         super(Block.Properties.of(Material.STONE)
                 .requiresCorrectToolForDrops()
                 .harvestLevel(2)
-                .harvestTool(ToolType.PICKAXE)
+                .harvestTool(ToolType.SHOVEL)
                 .strength(3.0F,3.0F));
 
     }

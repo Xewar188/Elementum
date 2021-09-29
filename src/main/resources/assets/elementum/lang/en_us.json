@@ -5,5 +5,7 @@
   "block.elementum.water_essence_block": "Water Essence Block",
   "item.elementum.water_essence": "Water Essence",
   "block.elementum.earth_essence_block": "Earth Essence Block",
-  "item.elementum.earth_essence": "Earth Essence"
+  "item.elementum.earth_essence": "Earth Essence",
+  "block.elementum.air_essence_block": "Air Essence Block",
+  "item.elementum.air_essence": "Air Essence"
 }

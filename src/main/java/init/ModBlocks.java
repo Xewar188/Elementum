@@ -1,5 +1,6 @@
 package init;
 
+import blocks.AirEssenceBlock;
 import blocks.EarthEssenceBlock;
 import blocks.FireEssenceBlock;
 import blocks.WaterEssenceBlock;
@@ -22,16 +23,18 @@ public class ModBlocks {
     public static EarthEssenceBlock earthEssenceBlock;
     public static BlockItem earthEssenceBlockItem;
 
+    public static AirEssenceBlock airEssenceBlock;
+    public static BlockItem airEssenceBlockItem;
+
     @SubscribeEvent
     public static void onBlocksRegistration(final RegistryEvent.Register<Block> blockRegisterEvent) {
-        fireEssenceBlock = (FireEssenceBlock)(new FireEssenceBlock().setRegistryName(Elementum.MODID, "fire_essence_block"));
-        blockRegisterEvent.getRegistry().register(fireEssenceBlock);
+        fireEssenceBlock = (FireEssenceBlock) registerBlock(new FireEssenceBlock(),"fire_essence_block", blockRegisterEvent);
 
-        waterEssenceBlock = (WaterEssenceBlock)(new WaterEssenceBlock().setRegistryName(Elementum.MODID, "water_essence_block"));
-        blockRegisterEvent.getRegistry().register(waterEssenceBlock);
+        waterEssenceBlock = (WaterEssenceBlock)registerBlock(new WaterEssenceBlock(),"water_essence_block", blockRegisterEvent);
 
-        earthEssenceBlock = (EarthEssenceBlock)(new EarthEssenceBlock().setRegistryName(Elementum.MODID, "earth_essence_block"));
-        blockRegisterEvent.getRegistry().register(earthEssenceBlock);
+        earthEssenceBlock = (EarthEssenceBlock)registerBlock(new EarthEssenceBlock(),"earth_essence_block", blockRegisterEvent);
+
+        airEssenceBlock = (AirEssenceBlock)registerBlock(new AirEssenceBlock(),"air_essence_block", blockRegisterEvent);
     }
 
     @SubscribeEvent
@@ -40,16 +43,26 @@ public class ModBlocks {
 
         Item.Properties itemSimpleProperties = new Item.Properties()
                 .tab(ModItemGroup.MAIN_ITEM_GROUP);  // which inventory tab?
-        fireEssenceBlockItem = new BlockItem(fireEssenceBlock, itemSimpleProperties);
-        fireEssenceBlockItem.setRegistryName(Objects.requireNonNull(fireEssenceBlock.getRegistryName()));
-        itemRegisterEvent.getRegistry().register(fireEssenceBlockItem);
 
-        waterEssenceBlockItem = new BlockItem(waterEssenceBlock, itemSimpleProperties);
-        waterEssenceBlockItem.setRegistryName(Objects.requireNonNull(waterEssenceBlock.getRegistryName()));
-        itemRegisterEvent.getRegistry().register(waterEssenceBlockItem);
+        fireEssenceBlockItem = registerItem(fireEssenceBlock, itemSimpleProperties, itemRegisterEvent);
 
-        earthEssenceBlockItem = new BlockItem(earthEssenceBlock, itemSimpleProperties);
-        earthEssenceBlockItem.setRegistryName(Objects.requireNonNull(earthEssenceBlock.getRegistryName()));
-        itemRegisterEvent.getRegistry().register(earthEssenceBlockItem);
+        waterEssenceBlockItem = registerItem(waterEssenceBlock, itemSimpleProperties, itemRegisterEvent);
+
+        earthEssenceBlockItem = registerItem(earthEssenceBlock, itemSimpleProperties, itemRegisterEvent);
+
+        airEssenceBlockItem = registerItem(airEssenceBlock, itemSimpleProperties, itemRegisterEvent);
+    }
+
+    public static Block registerBlock(Block toRegister, String itemName, final RegistryEvent.Register<Block> blockRegisterEvent) {
+        Block toReturn = toRegister.setRegistryName(Elementum.MODID, itemName);
+        blockRegisterEvent.getRegistry().register(toReturn);
+        return toReturn;
+    }
+
+    public static BlockItem registerItem(Block toRegister, Item.Properties itemSimpleProperties, final RegistryEvent.Register<Item> itemRegisterEvent) {
+        BlockItem toReturn = new BlockItem(toRegister, itemSimpleProperties);
+        toReturn.setRegistryName(Objects.requireNonNull(toRegister.getRegistryName()));
+        itemRegisterEvent.getRegistry().register(toReturn);
+        return toReturn;
     }
 }
